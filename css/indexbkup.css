@@ -8,82 +8,7 @@
 
 /* Top Bar */
 
-#nav-bar {
-  display: flex;
-  height: 10vh;
-}
-
-#app-buttons-container {
-  border: green solid;
-  width: 20vw;
-  height: 100%;
-}
-
-#app-buttons {
-  display: inline-table;
-  height: 100%;
-}
-
-#app-buttons li {
-  display: table-cell;
-  vertical-align: middle;
-  height: 10vh;
-}
-
-#app-buttons li:first-child {
-  border: solid rebeccapurple;
-  padding: 0 5% 0 0;
-}
-
-#app-buttons li:last-child {
-  border: solid red;
-}
-
-#app-buttons li img {
-  display: block;
-  height: 50%;
-}
-
-#logo-container {
-  border: blue solid;
-  width: 60vw;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#logo h1 {
-  cursor: pointer;
-  font-family: "abel";
-  font-size: clamp(3rem, 5vh, 7rem);
-  font-weight: 200;
-  margin: 0;
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-}
-
-#logo h1 span {
-  font-weight: 800;
-}
-
-#profile-buttons-container {
-  border: magenta solid;
-  width: 20vw;
-  height: 100%;
-}
-
-hr.line {
-  width: 100%;
-  border: none;
-  border-top: 2px solid;
-  color: lightgrey
-}
-
-
-
-/* .header {
+.header {
   user-select: none;
   width: 100%;
   height: 80px;
@@ -180,4 +105,7 @@ hr.line {
   border: none;
   border-top: 2px solid;
   color: lightgrey
-} */
+}
+
+
+/*
