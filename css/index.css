@@ -11,17 +11,21 @@
 #nav-bar {
   display: flex;
   height: 10vh;
+  user-select: none;
 }
 
+
+/* Top Bar App Plant/Space Buttons */
+
 #app-buttons-container {
-  border: green solid;
   width: 20vw;
-  height: 100%;
+  height: 10vh;
 }
 
 #app-buttons {
   display: inline-table;
   height: 100%;
+  padding: 0 0 0 2vw;
 }
 
 #app-buttons li {
@@ -31,21 +35,19 @@
 }
 
 #app-buttons li:first-child {
-  border: solid rebeccapurple;
-  padding: 0 5% 0 0;
-}
-
-#app-buttons li:last-child {
-  border: solid red;
+  padding: 0 0.5vw 0 0;
 }
 
 #app-buttons li img {
   display: block;
-  height: 50%;
+  height: 4vh;
+  cursor: pointer;
 }
 
+
+/* Top Bar Logo */
+
 #logo-container {
-  border: blue solid;
   width: 60vw;
   height: 100%;
   display: flex;
@@ -58,6 +60,7 @@
   font-family: "abel";
   font-size: clamp(3rem, 5vh, 7rem);
   font-weight: 200;
+  color: green;
   margin: 0;
   display: table-cell;
   text-align: center;
@@ -68,10 +71,83 @@
   font-weight: 800;
 }
 
-#profile-buttons-container {
-  border: magenta solid;
+
+/* Burger Button with Styling */
+
+#nav-buttons-container {
   width: 20vw;
+  height: 10vh;
+}
+
+.ham {
+  float: right;
+  padding: 0 5vw 0 0;
+  border: none;
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+  height: 10vh;
+  /* always keep ham on top of everything */
+  z-index: 1000;
+  cursor: default;
+  background-color: transparent;
+  outline: none;
+}
+
+.ham img {
+  cursor: pointer;
+  display: block;
+  height: 4vh;
+}
+
+/* change ham image to close */
+.showClose {
+  background-image: url("https://ljc-dev.github.io/testing0/ham-close.svg");
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: green;
+  /* hide the menu above the screen by default */
+  transform: translateY(-100%);
+  /* transition adds a little animation when sliding in and out the menu */
+  transition: transform 0.2s ease;
+}
+
+.showNav {
+  /* show the menu */
+  transform: translateY(0);
+}
+
+/* Burger Styling */
+
+.navbar ul {
+  width: 100%;
   height: 100%;
+  list-style: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar ul li a {
+  color: green;
+  padding-bottom: 10px;
+  border-bottom: 2px solid lightgrey;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+}
+
+.navbar ul li a:hover, .navbar ul li a:focus {
+  border-bottom: 2px solid white;
 }
 
 hr.line {
@@ -80,104 +156,3 @@ hr.line {
   border-top: 2px solid;
   color: lightgrey
 }
-
-
-
-/* .header {
-  user-select: none;
-  width: 100%;
-  height: 80px;
-  display: block;
-  text-align: center;
-  background-color:rgb(243, 243, 243);
-}
-
-.inner-header {
-  width: 100%;
-  height: 100%;
-  display: block;
-  margin: 0 auto;
-}
-
-.app-buttons {
-  height: 100%;
-  float: left;
-}
-
-.app-buttons a {
-  height: 100%;
-  display: inline-table;
-  float: right;
-  padding: 0px 20px;
-}
-
-.app-buttons a li {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-}
-
-.app-buttons a li img {
-  cursor: pointer;
-}
-
-.logo-container {
-  height: 100%;
-  display: inline-table;
-  
-}
-
-.logo-container h1 {
-  cursor: pointer;
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  font-family: "abel";
-  font-size: 60px;
-  font-weight: 200;
-}
-
-.logo-container h1.green-logo {
-  color: green;
-}
-
-.logo-container h1.red-logo {
-  color: red;
-}
-
-.logo-container h1 span {
-  font-weight: 800;
-}
-
-.navigation {
-  float: right;
-  height: 100%;
-  display: inline-block;
-}
-
-.navigation a {
-  height: 100%;
-  display: inline-table;
-  float: left;
-  padding: 0px 20px;
-}
-
-.navigation a li {
-  display: table-cell;
-  vertical-align: middle;
-  height: 100%;
-  color: green;
-  font-family: "abel";
-  font-size: 24px;
-}
-
-.navigation a li p {
-  cursor: pointer;
-}
-
-hr.line {
-  width: 100%;
-  border: none;
-  border-top: 2px solid;
-  color: lightgrey
-} */
