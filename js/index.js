@@ -1,33 +1,88 @@
-const logo = document.getElementById('logo')
-const leafButton = document.getElementById('leaf-button')
+// Burger Button
 
-let srcs = {
-  "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/green-leaf.png": "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/orange-leaf.png",
-  "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/orange-leaf.png": "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/green-leaf.png"
-}
+let burgerOptions = document.querySelector("#burger-button-options")
+let burger = document.querySelector("#burger-icon")
 
-leafButton.addEventListener('click', function(event) {
-  leafButton.src = srcs[leafButton.src]
-})
-
-
-var navbar = document.querySelector(".navbar")
-var ham = document.getElementById('burger')
-let burgs = {
-  "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/green-burger.png": "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/orange-burger.png",
-  "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/orange-burger.png": "file://wsl%24/Ubuntu/home/spenser6131/development/flatiron/phase-4/projects/greenhouse-frontend/images/green-burger.png"
-}
-ham.addEventListener("click", toggleHamburger)
+burger.addEventListener("click", toggleHamburger)
 
 function toggleHamburger(){
-  navbar.classList.toggle("showNav")
-  ham.src = burgs[ham.src]
+  burgerOptions.classList.toggle("showNav")
+  burger.classList.toggle("green-burger")
+  burger.classList.toggle("orange-burger")
+  closeDoor()
+  closeLeaf()
 }
 
-var menuLinks = document.querySelectorAll(".menuLink")
+let burgerMenuLinks = document.querySelectorAll("#burger-button-options .menuLink")
 
-menuLinks.forEach( 
-  function(menuLink) { 
+burgerMenuLinks.forEach( 
+  function(menuLink) {
     menuLink.addEventListener("click", toggleHamburger) 
   }
 )
+
+
+// Leaf Button
+
+let leafOptions = document.querySelector("#leaf-button-options")
+let leaf = document.querySelector("#leaf-icon")
+
+leaf.addEventListener("click", toggleLeaf)
+
+function toggleLeaf(){
+  leafOptions.classList.toggle("showNav")
+  leaf.classList.toggle("green-leaf")
+  leaf.classList.toggle("orange-leaf")
+  closeDoor()
+  closeBurger()
+}
+
+let leafMenuLinks = document.querySelectorAll("#leaf-button-options .menuLink")
+
+leafMenuLinks.forEach( 
+  function(menuLink) { 
+    menuLink.addEventListener("click", toggleLeaf) 
+  }
+)
+
+
+// Door Button
+
+let doorOptions = document.querySelector("#door-button-options")
+let door = document.querySelector("#door-icon")
+
+door.addEventListener("click", toggleDoor)
+
+function toggleDoor(){
+  doorOptions.classList.toggle("showNav")
+  door.classList.toggle("green-door")
+  door.classList.toggle("orange-door")
+  closeLeaf()
+  closeBurger()
+}
+
+let doorMenuLinks = document.querySelectorAll("#door-button-options .menuLink")
+
+doorMenuLinks.forEach( 
+  function(menuLink) { 
+    menuLink.addEventListener("click", toggleDoor) 
+  }
+)
+  
+function closeLeaf(){
+  leaf.classList.remove("orange-leaf")
+  leaf.classList.add("green-leaf")
+  leafOptions.classList.remove("showNav")
+}
+  
+function closeDoor(){
+  door.classList.remove("orange-door")
+  door.classList.add("green-door")
+  doorOptions.classList.remove("showNav")
+}
+  
+function closeBurger(){
+  burger.classList.remove("orange-burger")
+  burger.classList.add("green-burger")
+  burgerOptions.classList.remove("showNav")
+}

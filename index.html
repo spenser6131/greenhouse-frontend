@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="icon" sizes="192x192" href="images/icon.ico">
     <title>GreenHouse</title>
   </head>
@@ -13,12 +14,22 @@
     <div id="nav-bar">
 
       <div id="app-buttons-container">
-        <ul id="app-buttons">
-          <li><img id="leaf-button" src="images/green-leaf.png" height=50px></li>
-          <li><img id="door-button" src="images/green-door.png" height=50px></li>
-        </ul>
+        <button id="leaf-button"><div id="leaf-icon" class="green-leaf"></div></button>
+        <nav id="leaf-button-options" class="navbar">
+          <ul>
+            <li><a class="menuLink" href="#">ONE!!!!!!!!!!!!!</a></li>
+          </ul>
+        </nav>
+      
+        <button id="door-button"><div id="door-icon" class="green-door"></div></button>
+        <nav id="door-button-options" class="navbar">
+          <ul>
+            <li><a class="menuLink" href="#">two.</a></li>
+          </ul>
+        </nav>
       </div>
       
+
       <div id="logo-container">
         <div id="logo">
           <h1>Green<span>House</span></h1>
@@ -26,13 +37,10 @@
       </div>
       
       <div id="nav-buttons-container">
-        <button class="ham"><img id="burger" src="images/green-burger.png"></button>
-        <nav class="navbar">
+        <button id="burger-button"><div id="burger-icon" class="green-burger"></div></button>
+        <nav id="burger-button-options" class="navbar">
           <ul>
-            <li><a class="menuLink" href="#">Home</a></li>
-            <li><a class="menuLink" href="#">Profile</a></li>
-            <li><a class="menuLink" href="#">About</a></li>
-            <li><a class="menuLink" href="#">Contacts</a></li>
+            <li><a class="menuLink" href="#">Log In</a></li>
           </ul>
         </nav>
       </div>

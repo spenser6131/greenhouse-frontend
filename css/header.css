@@ -1,0 +1,184 @@
+/* Top Bar */
+
+#nav-bar {
+  display: flex;
+  height: 10vh;
+  user-select: none;
+}
+
+
+/* Top Bar App Plant/Space Buttons */
+
+#app-buttons-container {
+  width: 20vw;
+  height: 10vh;
+  display: flex;
+}
+
+#app-buttons li div {
+  display: block;
+  height: 4vh;
+  cursor: pointer;
+}
+
+#leaf-button {
+  padding: 0 2vw 0 3vw;
+  border: none;
+  position: relative;
+  vertical-align: middle;
+  height: 10vh;
+  z-index: 1000;
+  cursor: default;
+  background-color: transparent;
+  outline: none;
+}
+
+#leaf-icon {
+  cursor: pointer;
+  display: block;
+  height: 4vh;
+}
+
+.green-leaf {
+  content: url("../images/green-leaf.png");
+}
+
+.green-door {
+  content: url("../images/green-door.png");
+}
+
+#door-button {
+  border: none;
+  position: relative;
+  vertical-align: middle;
+  height: 10vh;
+  z-index: 1000;
+  cursor: default;
+  background-color: transparent;
+  outline: none;
+}
+
+#door-icon {
+  cursor: pointer;
+  display: block;
+  height: 4vh;
+}
+
+.orange-leaf {
+  content: url("../images/orange-leaf.png");
+}
+
+.orange-door {
+  content: url("../images/orange-door.png");
+}
+
+
+/* Top Bar Logo */
+
+#logo-container {
+  width: 60vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo h1 {
+  cursor: pointer;
+  font-family: "abel";
+  font-size: clamp(3rem, 5vh, 7rem);
+  font-weight: 200;
+  color: green;
+  margin: 0;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#logo h1 span {
+  font-weight: 800;
+}
+
+
+/* Burger Button with Styling */
+
+#nav-buttons-container {
+  width: 20vw;
+  height: 10vh;
+}
+
+#burger-button {
+  float: right;
+  padding: 0 3vw 0 0;
+  border: none;
+  position: relative;
+  vertical-align: middle;
+  height: 10vh;
+  z-index: 1000;
+  cursor: default;
+  background-color: transparent;
+  outline: none;
+}
+
+#burger-icon {
+  cursor: pointer;
+  display: block;
+  height: 4vh;
+}
+
+.green-burger {
+  content: url("../images/green-burger.png");
+}
+
+.orange-burger {
+  content: url("../images/orange-burger.png");
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: green;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+}
+
+.showNav {
+  transform: translateY(0);
+}
+
+/* Burger Styling */
+
+.navbar ul {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar ul li a {
+  color: green;
+  padding-bottom: 10px;
+  border-bottom: 2px solid lightgrey;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(2rem, 3vh, 4rem);
+}
+
+.navbar ul li a:hover, .navbar ul li a:focus {
+  border-bottom: 2px solid white;
+}
+
+hr.line {
+  width: 100%;
+  border: none;
+  border-top: 2px solid;
+  color: lightgrey;
+}
