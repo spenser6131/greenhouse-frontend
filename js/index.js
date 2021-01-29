@@ -73,6 +73,7 @@ function closeLeaf(){
   leaf.classList.remove("orange-leaf")
   leaf.classList.add("green-leaf")
   leafOptions.classList.remove("showNav")
+  newPlantForm.reset()
 }
   
 function closeDoor(){
@@ -86,3 +87,16 @@ function closeBurger(){
   burger.classList.add("green-burger")
   burgerOptions.classList.remove("showNav")
 }
+
+
+
+
+// New Plant Form
+
+let newPlantForm = document.getElementById("new-plant-form")
+
+newPlantForm.addEventListener("submit", function(event){
+  event.preventDefault()
+  closeLeaf()
+  console.log(event.target)
+})
