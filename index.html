@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="css/body.css">
     <link rel="icon" sizes="192x192" href="images/icon.ico">
     <title>GreenHouse</title>
   </head>
@@ -12,23 +13,79 @@
   <body>
 
     <div id="nav-bar">
-
       <div id="app-buttons-container">
         <button id="leaf-button"><div id="leaf-icon" class="green-leaf"></div></button>
         <nav id="leaf-button-options" class="navbar">
-          <ul>
-            <li><a class="menuLink" href="#">ONE!!!!!!!!!!!!!</a></li>
-          </ul>
+          <form id="new-plant-form" class="dropdown-form">
+            <h2>New Plant</h2>
+            <br>
+            <label>
+              <h3>Species:</h3>
+              <input type="text" name="species" value="">
+            </label>
+
+            <label>
+              <h3>Light Requirement:</h3>
+              <input type="text" name="light-requirement" value="">
+            </label>
+
+            <label>
+              <h3>Humidity Requirement:</h3>
+              <input type="text" name="humidity-requirement" value="">
+            </label>
+
+            <label>
+              <h3>Watering Frequency:</h3>
+              <input type="text" name="water-frequency" value="">
+            </label>
+
+            <label>
+              <h3>Date Last Watered:</h3>
+              <input type="date" name="last_watering" value="">
+            </label>
+
+            <label>
+              <h3>Date Last Fertilized:</h3>
+              <input type="date" name="last_fertilization" value="">
+            </label>
+
+            <label>
+              <h3>Comments:</h3>
+              <input type="text" name="comments" value="">
+            </label>
+
+            <label>
+              <input type="submit" value="Create">
+            </label>
+          </form>
         </nav>
       
         <button id="door-button"><div id="door-icon" class="green-door"></div></button>
         <nav id="door-button-options" class="navbar">
-          <ul>
-            <li><a class="menuLink" href="#">two.</a></li>
-          </ul>
+          <form id="new-space-form" class="dropdown-form">
+            <h2>New Space</h2>
+            <br>
+            <label>
+              <h3>Name:</h3>
+              <input type="text" name="name" value="">
+            </label>
+            
+            <label>
+              <h3>Humidity Level:</h3>
+              <input type="text" name="humidity" value="">
+            </label>
+            
+            <label>
+              <h3>Light Level:</h3>
+              <input type="text" name="light" value="">
+            </label>
+
+            <label>
+              <input type="submit" value="Create">
+            </label>
+          </form>
         </nav>
       </div>
-      
 
       <div id="logo-container">
         <div id="logo">
@@ -40,31 +97,36 @@
         <button id="burger-button"><div id="burger-icon" class="green-burger"></div></button>
         <nav id="burger-button-options" class="navbar">
           <ul>
-            <li><a class="menuLink" href="#">Log In</a></li>
+            <li><a class="menuLink">Log In</a></li>
+            <li><a class="menuLink">Sign Up</a></li>
+            <li><a class="menuLink">About</a></li>
           </ul>
         </nav>
       </div>
-  
     </div>
 
-
-
-
     <hr class="line">
-    <!-- <div style="border: solid;" class="content">
-      <div class="left-pane">
-        
+
+    <div class="content">
+      <div class="split left">
+        <div class="centered">
+          
+        </div>
       </div>
       
-      <div class="right-pane">
-        
+      <div class="vertical-line"></div>
+
+      <div class="split right">
+        <div class="centered">
+          
+        </div>
       </div>
-    </div> -->
+    </div>
 
   </body>
 
   <script src="js/plantAdapter.js"></script>
-  <script src="js/houseAdapter.js"></script>
+  <script src="js/spaceAdapter.js"></script>
   <script defer src="js/index.js"></script>
 
 </html>
