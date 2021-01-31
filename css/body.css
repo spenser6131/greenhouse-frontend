@@ -4,6 +4,8 @@
   z-index: 1;
   top: 10;
   overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .left {
@@ -14,15 +16,24 @@
 .right {
   width: 70%;
   right: 0;
-  display: inline;
 }
 
 .centered {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-card {
+  flex: 25%;
+  padding: 2vh 2vw;
+  box-sizing: border-box;
+}
+.holder {
+  border: solid 10px;
+  border-image: linear-gradient(45deg,green,lightgrey) 1;
 }
 
 .vertical-line {
@@ -31,4 +42,66 @@
   margin: -0.1vh 0 0 30vw;
   border-left: 2px solid;
   color: lightgrey;
+}
+
+
+/* =============================================================================================== */
+
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  
+  .btn {
+  white-space: nowrap;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  width: auto;
+  cursor: pointer;
+  border: 1px solid green;
+  background-color: rgba(211, 211, 211, 0.308);
+}
+
+.btn:hover {
+  background-color: rgba(211, 211, 211, 0.308);
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card_title {
+  white-space: nowrap;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  font-weight: 400;
 }
