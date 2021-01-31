@@ -1,9 +1,9 @@
 class SpaceAdapter{
-  static baseURL = "http://localhost:3000/spaces"
+  static baseURL = "http://localhost:3000/spaces/"
 
   static fetchAndMakeSpaces(){
     return fetch(SpaceAdapter.baseURL)
-      .then((obj) => obj.json())
+      .then(obj => obj.json())
       .then(function(spacesArray){
         return spacesArray.forEach(function(space){
           return new Space(space)
@@ -11,8 +11,21 @@ class SpaceAdapter{
       })
   }
 
+  static createSpace(body){
+    return fetch(`${SpaceAdapter.baseURL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        space: body
+      })
+    })
+  }
+  
   static editSpace({id, name, humidity, light}){
-    return fetch(`${SpaceAdapter.baseURL}/${id}`, {
+    return fetch(`${SpaceAdapter.baseURL}${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -25,6 +38,17 @@ class SpaceAdapter{
           light
         }
       })
+    })
+  }
+
+  static deleteSpace({id}){
+    console.log(id)
+    return fetch(`${SpaceAdapter.baseURL}${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
     })
   }
 }
