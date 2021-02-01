@@ -13,9 +13,14 @@ class Plant{
     this.comments = comments
     this.space_id = space_id
 
+    this.spacePlant = document.createElement('ul')
+    this.spacePlant.innerHTML = `<span>${this.species}</span>`
+    this.spacePlant.classList = 'spacePlant'
+    this.spacePlant.addEventListener('click', Plant.displaySpacePlantInfo)
+
     this.editSpacePlantButton = document.createElement('button')
-    this.editSpacePlantButton.innerText = "Edit Plant"
-    this.editSpacePlantButton.classList = "btn "
+    this.editSpacePlantButton.innerText = `Edit ${this.species}`
+    this.editSpacePlantButton.classList = "btn"
     this.editSpacePlantButton.addEventListener("click", this.renderSpacePlantEditForm)
 
     this.form = document.createElement('form')
@@ -25,11 +30,6 @@ class Plant{
   }
 
   renderLI = () => {
-    this.spacePlant = document.createElement('ul')
-    this.spacePlant.innerHTML = `<span>${this.species}</span>`
-    this.spacePlant.classList = 'spacePlant'
-    this.spacePlant.addEventListener('click', Plant.displaySpacePlantInfo)
-    
     let light_requirement = document.createElement('li')
     light_requirement.innerText = `Optimal Light: ${this.light_requirement}`
     
@@ -46,21 +46,16 @@ class Plant{
     last_fertilization.innerText = `Last Fertilized: ${this.last_fertilization}`
     
     let comments = document.createElement('li')
-    if (this.comments == null){
+    if (this.comments == null || this.comments == ""){
       comments.innerText = "(No comments to display)"
     } else {  
       comments.innerText = `Comments: ${this.comments}`
     }
-    
-    this.deleteSpacePlantButton = document.createElement('button')
-    this.deleteSpacePlantButton.innerText = "Delete Plant"
-    this.deleteSpacePlantButton.classList = "btn "
-    this.deleteSpacePlantButton.addEventListener("click", this.deleteSpacePlant)
 
-    let elArr = [light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, this.editSpacePlantButton, this.deleteSpacePlantButton]
-    elArr.forEach(element => element.classList += 'hidden')
+    let elArr = [light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, this.editSpacePlantButton]
+    elArr.forEach(element => element.classList += ' hidden')
 
-    this.spacePlant.append(light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, this.editSpacePlantButton, this.deleteSpacePlantButton)
+    this.spacePlant.append(light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, this.editSpacePlantButton)
     return this.spacePlant
   }
 
@@ -78,8 +73,8 @@ class Plant{
     this.spacePlant.innerHTML = ''
     this.spacePlant.appendChild(this.form)
     this.deleteSpacePlantButton = document.createElement('button')
-    this.deleteSpacePlantButton.innerText = "Delete Plant"
-    this.deleteSpacePlantButton.classList = "btn"
+    this.deleteSpacePlantButton.innerText = `Delete ${this.species}`
+    this.deleteSpacePlantButton.classList = "btn hidden"
     this.deleteSpacePlantButton.addEventListener("click", this.deleteSpacePlant)
     this.form.innerHTML = `
       <label>Species:</label>
@@ -105,7 +100,7 @@ class Plant{
       <br/>
       <label>Move To New Space:</label>
       <select id="plantSpaceSelect" name="space_id"></select>
-      <br/><br/>
+      <br/>
       <input class="btn" type="submit" value="Submit">
     `
     let dropdown = document.getElementById('plantSpaceSelect')
@@ -113,17 +108,25 @@ class Plant{
       let spaceOption = `<option ${this.space_id == space.id ? "selected" : ""} value="${space.id}">${space.name}</option>`
       dropdown.innerHTML += spaceOption
     })
-    this.form.appendChild(this.deleteSpacePlantButton)
-    this.form.innerHTML += '<br/><br/>'
+    this.spacePlant.appendChild(this.deleteSpacePlantButton)
   }
 
   submitEditSpacePlantForm = (e) => {
     e.preventDefault()
+    console.log(this)
     this.form.querySelectorAll('input, textarea, select').forEach(input => {
       input.name !== "submit" && (this[`${input.name}`] = input.value)
     })
     this.editSpacePlantButton.disabled = false
     PlantAdapter.editPlant(this)
-    run()
+    this.form.remove()
+    this.spacePlant.innerHTML += `<span>${this.species}</span>`
+    this.renderLI()
+  }
+
+  deleteSpacePlant = () => {
+    console.log(PlantAdapter.deletePlant)
+    this.spacePlant.remove()
+    PlantAdapter.deletePlant(this)
   }
 }
