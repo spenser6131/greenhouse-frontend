@@ -43,7 +43,7 @@ class SpaceAdapter{
   }
 
   static deleteSpace({id}){
-    fetch(`${SpaceAdapter.baseURL}${id}`, {
+    return fetch(`${SpaceAdapter.baseURL}${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
