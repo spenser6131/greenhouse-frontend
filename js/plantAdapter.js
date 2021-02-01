@@ -45,7 +45,6 @@ class PlantAdapter{
   }
 
   static deletePlant({id}){
-    console.log(id)
     return fetch(`${PlantAdapter.baseURL}${id}`, {
       method: "DELETE",
       headers: {
