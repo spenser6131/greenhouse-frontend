@@ -22,6 +22,7 @@ class SpaceAdapter{
         space: body
       })
     })
+    .then((obj) => obj.json())
   }
   
   static editSpace({id, name, humidity, light}){
