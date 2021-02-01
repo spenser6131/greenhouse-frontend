@@ -43,8 +43,12 @@
   content: url("../images/green-leaf.png");
 }
 
-.green-door {
-  content: url("../images/green-door.png");
+.orange-leaf {
+  content: url("../images/orange-leaf.png");
+}
+
+.green-leaf:hover {
+  content: url("../images/orange-leaf.png");
 }
 
 #door-button {
@@ -64,11 +68,15 @@
   height: 4vh;
 }
 
-.orange-leaf {
-  content: url("../images/orange-leaf.png");
+.green-door {
+  content: url("../images/green-door.png");
 }
 
 .orange-door {
+  content: url("../images/orange-door.png");
+}
+
+.green-door:hover {
   content: url("../images/orange-door.png");
 }
 
@@ -129,6 +137,10 @@
   content: url("../images/green-burger.png");
 }
 
+.green-burger:hover {
+  content: url("../images/orange-burger.png");
+}
+
 .orange-burger {
   content: url("../images/orange-burger.png");
 }
@@ -172,10 +184,12 @@
   border-bottom: 2px solid lightgrey;
   text-decoration: none;
   font-size: clamp(2rem, 3vh, 4rem);
+  cursor: pointer;
 }
 
 .navbar ul li a:hover, .navbar ul li a:focus {
   border-bottom: 2px solid white;
+  color: orange;
 }
 
 hr.line {
