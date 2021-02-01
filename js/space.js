@@ -25,7 +25,6 @@ class Space{
     this.allPlants().forEach(plant => {
       let plantUL = document.createElement('ul')
       plantUL.id = `space-plant-${plant.id}`
-      console.log(plantUL)
     })
     
     this.editButton = document.createElement('button')
@@ -90,6 +89,8 @@ class Space{
         newSpaceData[`${input.name}`] = input.value
     })
     SpaceAdapter.createSpace(newSpaceData)
+    .then(resp => this.renderNewSpace(resp))
+    closeDoor()
   }
 
   submitEditSpaceForm = (e) => {
@@ -107,12 +108,20 @@ class Space{
     SpaceAdapter.deleteSpace(this)
   }
 
-  static renderAllSpaces(){
-    Space.all.forEach(space => {
+  static renderAllSpaces = () => {
+    this.all.forEach(space => {
       space.renderDetails()
       space.renderPlants()
-      Space.spacesContainer.appendChild(space.main)
+      this.spacesContainer.appendChild(space.main)
     })
+  }
+
+  static renderNewSpace = (space) => {
+    let newSpace = new Space(space)
+    console.log
+    newSpace.renderDetails()
+    newSpace.renderPlants()
+    Space.spacesContainer.appendChild(newSpace.main)
   }
 
 }
