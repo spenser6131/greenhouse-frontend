@@ -1,5 +1,5 @@
 class PlantAdapter{
-  static baseURL = "http://localhost:3000/plants"
+  static baseURL = "http://localhost:3000/plants/"
 
   static fetchAndMakePlants(){
     return fetch(PlantAdapter.baseURL)
@@ -22,7 +22,7 @@ class PlantAdapter{
     })
   }
   
-  static editPlant({id, species, humidity_requirement, light_requirement, water_frequency, last_watering, last_fertilization, comments}){
+  static editPlant({id, species, humidity_requirement, light_requirement, water_frequency, last_watering, last_fertilization, comments, space_id}){
     return fetch(`${PlantAdapter.baseURL}${id}`, {
       method: "PUT",
       headers: {
@@ -37,10 +37,21 @@ class PlantAdapter{
           water_frequency,
           last_watering,
           last_fertilization,
-          comments
+          comments,
+          space_id
         }
       })
     })
   }
 
+  static deletePlant({id}){
+    console.log(id)
+    return fetch(`${PlantAdapter.baseURL}${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+  }
 }
