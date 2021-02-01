@@ -28,7 +28,7 @@ class Space{
     })
     
     this.editButton = document.createElement('button')
-    this.editButton.innerText = "Edit Space"
+    this.editButton.innerText = `Edit ${this.name}`
     this.editButton.classList = "btn"
     this.editButton.addEventListener('click', this.renderEditSpaceForm)
 
@@ -61,7 +61,7 @@ class Space{
     this.details.innerHTML = ''
     this.details.appendChild(this.form)
     this.deleteButton = document.createElement('button')
-    this.deleteButton.innerText = "Delete Space"
+    this.deleteButton.innerText = `Delete ${this.name}`
     this.deleteButton.classList = "btn"
     this.deleteButton.addEventListener("click", this.deleteSpace)
     this.form.innerHTML = `
@@ -73,11 +73,10 @@ class Space{
       <br/>
       <label>Light Level:</label>
       <input type="text" name="light" value="${this.light}">
-      <br/><br/>
+      <br/>
       <input class="btn" type="submit" value="Submit">
     `
-    this.form.appendChild(this.deleteButton)
-    this.form.innerHTML += '<br/><br/>'
+    this.details.append(this.deleteButton)
   }
 
   static submitNewSpaceForm = (e) => {
@@ -102,7 +101,7 @@ class Space{
     this.renderDetails()
     SpaceAdapter.editSpace(this)
   }
-
+  
   deleteSpace = (e) => {
     this.main.remove()
     SpaceAdapter.deleteSpace(this)
@@ -118,7 +117,6 @@ class Space{
 
   static renderNewSpace = (space) => {
     let newSpace = new Space(space)
-    console.log
     newSpace.renderDetails()
     newSpace.renderPlants()
     Space.spacesContainer.appendChild(newSpace.main)
