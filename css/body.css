@@ -33,6 +33,12 @@
   box-sizing: border-box;
 }
 
+.plant-card {
+  flex: 100%;
+  padding: 2vh 2vw;
+  box-sizing: border-box;
+}
+
 .holder {
   border: solid 10px;
   border-image: linear-gradient(45deg,green,lightgrey) 1;
