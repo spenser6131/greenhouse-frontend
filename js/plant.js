@@ -13,6 +13,9 @@ class Plant{
     this.comments = comments
     this.space_id = space_id
 
+    this.holder = document.createElement('div')
+    this.holder.classList = "holder card-content"
+
     this.spacePlant = document.createElement('ul')
     this.spacePlant.innerHTML = `<span>${this.species}</span>`
     this.spacePlant.classList = 'spacePlant'
@@ -23,6 +26,8 @@ class Plant{
     this.editSpacePlantButton.classList = "btn"
     this.editSpacePlantButton.addEventListener("click", this.renderSpacePlantEditForm)
 
+    this.holder.append(this.spacePlant)
+
     this.form = document.createElement('form')
     this.form.addEventListener('submit', this.submitEditSpacePlantForm)
 
@@ -30,6 +35,8 @@ class Plant{
   }
 
   renderLI = () => {
+    this.spacePlant.innerHTML = `<span>${this.species}</span>`
+
     let light_requirement = document.createElement('li')
     light_requirement.innerText = `Optimal Light: ${this.light_requirement}`
     
@@ -104,6 +111,7 @@ class Plant{
       <input class="btn" type="submit" value="Submit">
     `
     let dropdown = document.getElementById('plantSpaceSelect')
+    dropdown.innerHTML += `<option ${this.space_id == null ? "selected" : ""} value="">No Space</option>`
     Space.all.forEach(space =>{
       let spaceOption = `<option ${this.space_id == space.id ? "selected" : ""} value="${space.id}">${space.name}</option>`
       dropdown.innerHTML += spaceOption
@@ -121,6 +129,8 @@ class Plant{
     this.form.remove()
     this.spacePlant.innerHTML += `<span>${this.species}</span>`
     this.renderLI()
+    Plant.renderUnassignedPlants()
+    Space.renderAllSpaces()
   }
 
   deleteSpacePlant = () => {
@@ -146,10 +156,11 @@ class Plant{
     let plantsContainer = document.getElementById('plants-container')
     plantsContainer.innerHTML = ''
     this.all.forEach(plant => {
-      if (plant.space_id == null){
+      if (!plant.space_id){
         let newPlantCard = document.createElement('div')
         newPlantCard.classList = "plant-card"
-        newPlantCard.appendChild(plant.renderLI())
+        newPlantCard.appendChild(plant.holder)
+        plant.holder.append(plant.renderLI())
         plantsContainer.appendChild(newPlantCard)
       }
     })
