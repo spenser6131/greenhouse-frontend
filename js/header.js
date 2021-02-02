@@ -97,6 +97,14 @@ let newPlantForm = document.getElementById("new-plant-form")
 
 newPlantForm.addEventListener("submit", function(event){
   event.preventDefault()
+  Plant.submitNewPlantForm()
   closeLeaf()
-  console.log(event.target)
+})
+
+let newSpaceForm = document.getElementById('new-space-form')
+
+newSpaceForm.addEventListener('submit', function(event){
+  event.preventDefault()
+  Space.submitNewSpaceForm()
+  closeDoor()
 })
