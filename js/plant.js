@@ -113,7 +113,6 @@ class Plant{
 
   submitEditSpacePlantForm = (e) => {
     e.preventDefault()
-    console.log(this)
     this.form.querySelectorAll('input, textarea, select').forEach(input => {
       input.name !== "submit" && (this[`${input.name}`] = input.value)
     })
@@ -125,8 +124,38 @@ class Plant{
   }
 
   deleteSpacePlant = () => {
-    console.log(PlantAdapter.deletePlant)
     this.spacePlant.remove()
     PlantAdapter.deletePlant(this)
+  }
+
+  static submitNewPlantForm = () => {
+    let form = document.getElementById('new-plant-form')
+    let newPlantData = {}
+    form.querySelectorAll('input').forEach(function(input){
+      if (input.name !== "submit")
+        newPlantData[`${input.name}`] = input.value
+    })
+    PlantAdapter.createPlant(newPlantData)
+    .then(resp => {
+      new Plant(resp)
+      Plant.renderUnassignedPlants()
+    })
+  }
+
+  static renderUnassignedPlants = () => {
+    let plantsContainer = document.getElementById('plants-container')
+    plantsContainer.innerHTML = ''
+    this.all.forEach(plant => {
+      if (plant.space_id == null){
+        let newPlantCard = document.createElement('div')
+        newPlantCard.classList = "plant-card"
+        newPlantCard.appendChild(plant.renderLI())
+        plantsContainer.appendChild(newPlantCard)
+      }
+    })
+  }
+
+  static renderNewPlant = (plant) => {
+    console.log(Plant.all)
   }
 }
