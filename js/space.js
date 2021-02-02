@@ -107,6 +107,7 @@ class Space{
   }
 
   static renderAllSpaces = () => {
+    this.spacesContainer.innerHTML = ""
     this.all.forEach(space => {
       space.renderDetails()
       space.renderPlants()
