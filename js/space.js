@@ -79,17 +79,16 @@ class Space{
     this.details.append(this.deleteButton)
   }
 
-  static submitNewSpaceForm = (e) => {
-    e.preventDefault()
+  static submitNewSpaceForm = () => {
     let form = document.getElementById('new-space-form')
     let newSpaceData = {}
     form.querySelectorAll('input').forEach(function(input){
       if (input.name !== "submit")
         newSpaceData[`${input.name}`] = input.value
     })
+    console.log(newSpaceData)
     SpaceAdapter.createSpace(newSpaceData)
     .then(resp => this.renderNewSpace(resp))
-    closeDoor()
   }
 
   submitEditSpaceForm = (e) => {
