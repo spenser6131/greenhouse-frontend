@@ -53,7 +53,7 @@ class Plant{
     last_fertilization.innerText = `Last Fertilized: ${this.last_fertilization}`
     
     let comments = document.createElement('li')
-    if (this.comments == null || this.comments == ""){
+    if (!this.comments){
       comments.innerText = "(No comments to display)"
     } else {  
       comments.innerText = `Comments: ${this.comments}`
@@ -103,7 +103,7 @@ class Plant{
       <input type="date" name="last_fertilization" value="${this.last_fertilization}">
       <br/>
       <label>Comments:</label>
-      <textarea name="comments" value="${this.comments == null ? '' : this.comments}"></textarea>
+      <textarea name="comments">${this.comments ? this.comments : ''}</textarea>
       <br/>
       <label>Move To New Space:</label>
       <select id="plantSpaceSelect" name="space_id"></select>
