@@ -6,7 +6,7 @@ class PlantAdapter{
       .then(obj => obj.json())
       .then(function(plantsArray){
         return plantsArray.forEach(function(plant) {
-          if(plant.space_id !== null){
+          if (plant.space_id){
             return new Plant(plant)
           }
         })
