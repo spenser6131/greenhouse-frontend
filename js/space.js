@@ -49,7 +49,7 @@ class Space{
   }
   
   allPlants(){
-    return Plant.all.filter(plant => plant.space_id == this.id)
+    return Plant.all.filter(plant => plant.spaceId == this.id)
   }
 
   renderPlants(){

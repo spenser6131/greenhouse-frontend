@@ -2,16 +2,16 @@ class Plant{
 
   static all = []
 
-  constructor({id, species, light_req, humidity_req, water_freq, last_water, last_fert, comments, space_id}){
+  constructor({id, species, lightReq, humidityReq, waterFreq, lastWater, lastFert, comments, spaceId}){
     this.id = id
     this.species = species
-    this.light_req = light_req
-    this.humidity_req = humidity_req
-    this.water_freq = water_freq
-    this.last_water = last_water
-    this.last_fert = last_fert
+    this.lightReq = lightReq
+    this.humidityReq = humidityReq
+    this.waterFreq = waterFreq
+    this.lastWater = lastWater
+    this.lastFert = lastFert
     this.comments = comments
-    this.space_id = space_id
+    this.spaceId = spaceId
 
     this.holder = document.createElement('div')
     this.holder.classList = "holder card-content"
@@ -37,20 +37,20 @@ class Plant{
   renderLI = () => {
     this.spacePlant.innerHTML = `<span>${this.species}</span>`
 
-    let light_req = document.createElement('li')
-    light_req.innerText = `Optimal Light: ${this.light_req}`
+    let lightReq = document.createElement('li')
+    lightReq.innerText = `Optimal Light: ${this.lightReq}`
     
-    let humidity_req = document.createElement('li')
-    humidity_req.innerText = `Optimal Humidity: ${this.humidity_req}`
+    let humidityReq = document.createElement('li')
+    humidityReq.innerText = `Optimal Humidity: ${this.humidityReq}`
     
-    let water_freq = document.createElement('li')
-    water_freq.innerText = `Water Every ${this.water_freq} Days`
+    let waterFreq = document.createElement('li')
+    waterFreq.innerText = `Water Every ${this.waterFreq} Days`
     
-    let last_water = document.createElement('li')
-    last_water.innerText = `Last Watered: ${this.last_water}`
+    let lastWater = document.createElement('li')
+    lastWater.innerText = `Last Watered: ${this.lastWater}`
     
-    let last_fert = document.createElement('li')
-    last_fert.innerText = `Last Fertilized: ${this.last_fert}`
+    let lastFert = document.createElement('li')
+    lastFert.innerText = `Last Fertilized: ${this.lastFert}`
     
     let comments = document.createElement('li')
     if (!this.comments){
@@ -59,10 +59,10 @@ class Plant{
       comments.innerText = `Comments: ${this.comments}`
     }
 
-    let elArr = [light_req, humidity_req, water_freq, last_water, last_fert, comments, this.editSpacePlantButton]
+    let elArr = [lightReq, humidityReq, waterFreq, lastWater, lastFert, comments, this.editSpacePlantButton]
     elArr.forEach(element => element.classList += ' hidden')
 
-    this.spacePlant.append(light_req, humidity_req, water_freq, last_water, last_fert, comments, this.editSpacePlantButton)
+    this.spacePlant.append(lightReq, humidityReq, waterFreq, lastWater, lastFert, comments, this.editSpacePlantButton)
     return this.spacePlant
   }
 
@@ -88,32 +88,32 @@ class Plant{
       <input type="text" name="species" value="${this.species}">
       <br/>
       <label>Optimal Humidity:</label>
-      <input type="text" name="humidity_req" value="${this.humidity_req}">
+      <input type="text" name="humidityReq" value="${this.humidityReq}">
       <br/>
       <label>Optimal Light:</label>
-      <input type="text" name="light_req" value="${this.light_req}">
+      <input type="text" name="lightReq" value="${this.lightReq}">
       <br/>
       <label>Water Every "X" Days:</label>
-      <input type="text" name="water_freq" value="${this.water_freq}">
+      <input type="text" name="waterFreq" value="${this.waterFreq}">
       <br/>
       <label>Last Watered:</label>
-      <input type="date" name="last_water" value="${this.last_water}">
+      <input type="date" name="lastWater" value="${this.lastWater}">
       <br/>
       <label>Last Fertilized:</label>
-      <input type="date" name="last_fert" value="${this.last_fert}">
+      <input type="date" name="lastFert" value="${this.lastFert}">
       <br/>
       <label>Comments:</label>
       <textarea name="comments">${this.comments ? this.comments : ''}</textarea>
       <br/>
       <label>Move To New Space:</label>
-      <select id="plantSpaceSelect" name="space_id"></select>
+      <select id="plantSpaceSelect" name="spaceId"></select>
       <br/>
       <input class="btn" type="submit" value="Submit">
     `
     let dropdown = document.getElementById('plantSpaceSelect')
-    dropdown.innerHTML += `<option ${this.space_id == null ? "selected" : ""} value="">No Space</option>`
+    dropdown.innerHTML += `<option ${this.spaceId == null ? "selected" : ""} value="">No Space</option>`
     Space.all.forEach(space =>{
-      let spaceOption = `<option ${this.space_id == space.id ? "selected" : ""} value="${space.id}">${space.name}</option>`
+      let spaceOption = `<option ${this.spaceId == space.id ? "selected" : ""} value="${space.id}">${space.name}</option>`
       dropdown.innerHTML += spaceOption
     })
     this.spacePlant.appendChild(this.deleteSpacePlantButton)
@@ -156,7 +156,7 @@ class Plant{
     let plantsContainer = document.getElementById('plants-container')
     plantsContainer.innerHTML = ''
     this.all.forEach(plant => {
-      if (!plant.space_id){
+      if (!plant.spaceId){
         let newPlantCard = document.createElement('div')
         newPlantCard.classList = "plant-card"
         newPlantCard.appendChild(plant.holder)
