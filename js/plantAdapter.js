@@ -1,5 +1,5 @@
 class PlantAdapter{
-  static baseURL = "http://localhost:3000/plants/"
+  static baseURL = "http://localhost:3001/plants/"
 
   static fetchAndMakePlants(){
     return fetch(PlantAdapter.baseURL)
@@ -23,7 +23,7 @@ class PlantAdapter{
     })
   }
 
-  static createPlant({species, humidity_requirement, light_requirement, water_frequency, last_watering, last_fertilization, comments}){
+  static createPlant({species, humidity_req, light_req, water_freq, last_water, last_fert, comments}){
     return fetch(`${PlantAdapter.baseURL}`, {
       method: "POST",
       headers: {
@@ -33,11 +33,11 @@ class PlantAdapter{
       body: JSON.stringify({
         plant: {
           species,
-          humidity_requirement: parseInt(humidity_requirement),
-          light_requirement: parseInt(light_requirement),
-          water_frequency: parseInt(water_frequency),
-          last_watering,
-          last_fertilization,
+          humidity_req: parseInt(humidity_req),
+          light_req: parseInt(light_req),
+          water_freq: parseInt(water_freq),
+          last_water,
+          last_fert,
           comments
         }
       })
@@ -45,7 +45,7 @@ class PlantAdapter{
     .then((obj) => obj.json())
   }
   
-  static editPlant({id, species, humidity_requirement, light_requirement, water_frequency, last_watering, last_fertilization, comments, space_id}){
+  static editPlant({id, species, humidity_req, light_req, water_freq, last_water, last_fert, comments, space_id}){
     return fetch(`${PlantAdapter.baseURL}${id}`, {
       method: "PUT",
       headers: {
@@ -55,11 +55,11 @@ class PlantAdapter{
       body: JSON.stringify({
         plant: {
           species,
-          humidity_requirement,
-          light_requirement,
-          water_frequency,
-          last_watering,
-          last_fertilization,
+          humidity_req,
+          light_req,
+          water_freq,
+          last_water,
+          last_fert,
           comments,
           space_id
         }

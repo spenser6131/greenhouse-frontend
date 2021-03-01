@@ -1,5 +1,5 @@
 class SpaceAdapter{
-  static baseURL = "http://localhost:3000/spaces/"
+  static baseURL = "http://localhost:3001/spaces/"
 
   static fetchAndMakeSpaces(){
     return fetch(SpaceAdapter.baseURL)

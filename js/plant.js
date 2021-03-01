@@ -2,14 +2,14 @@ class Plant{
 
   static all = []
 
-  constructor({id, species, light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, space_id}){
+  constructor({id, species, light_req, humidity_req, water_freq, last_water, last_fert, comments, space_id}){
     this.id = id
     this.species = species
-    this.light_requirement = light_requirement
-    this.humidity_requirement = humidity_requirement
-    this.water_frequency = water_frequency
-    this.last_watering = last_watering
-    this.last_fertilization = last_fertilization
+    this.light_req = light_req
+    this.humidity_req = humidity_req
+    this.water_freq = water_freq
+    this.last_water = last_water
+    this.last_fert = last_fert
     this.comments = comments
     this.space_id = space_id
 
@@ -37,20 +37,20 @@ class Plant{
   renderLI = () => {
     this.spacePlant.innerHTML = `<span>${this.species}</span>`
 
-    let light_requirement = document.createElement('li')
-    light_requirement.innerText = `Optimal Light: ${this.light_requirement}`
+    let light_req = document.createElement('li')
+    light_req.innerText = `Optimal Light: ${this.light_req}`
     
-    let humidity_requirement = document.createElement('li')
-    humidity_requirement.innerText = `Optimal Humidity: ${this.humidity_requirement}`
+    let humidity_req = document.createElement('li')
+    humidity_req.innerText = `Optimal Humidity: ${this.humidity_req}`
     
-    let water_frequency = document.createElement('li')
-    water_frequency.innerText = `Water Every ${this.water_frequency} Days`
+    let water_freq = document.createElement('li')
+    water_freq.innerText = `Water Every ${this.water_freq} Days`
     
-    let last_watering = document.createElement('li')
-    last_watering.innerText = `Last Watered: ${this.last_watering}`
+    let last_water = document.createElement('li')
+    last_water.innerText = `Last Watered: ${this.last_water}`
     
-    let last_fertilization = document.createElement('li')
-    last_fertilization.innerText = `Last Fertilized: ${this.last_fertilization}`
+    let last_fert = document.createElement('li')
+    last_fert.innerText = `Last Fertilized: ${this.last_fert}`
     
     let comments = document.createElement('li')
     if (!this.comments){
@@ -59,10 +59,10 @@ class Plant{
       comments.innerText = `Comments: ${this.comments}`
     }
 
-    let elArr = [light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, this.editSpacePlantButton]
+    let elArr = [light_req, humidity_req, water_freq, last_water, last_fert, comments, this.editSpacePlantButton]
     elArr.forEach(element => element.classList += ' hidden')
 
-    this.spacePlant.append(light_requirement, humidity_requirement, water_frequency, last_watering, last_fertilization, comments, this.editSpacePlantButton)
+    this.spacePlant.append(light_req, humidity_req, water_freq, last_water, last_fert, comments, this.editSpacePlantButton)
     return this.spacePlant
   }
 
@@ -88,19 +88,19 @@ class Plant{
       <input type="text" name="species" value="${this.species}">
       <br/>
       <label>Optimal Humidity:</label>
-      <input type="text" name="humidity_requirement" value="${this.humidity_requirement}">
+      <input type="text" name="humidity_req" value="${this.humidity_req}">
       <br/>
       <label>Optimal Light:</label>
-      <input type="text" name="light_requirement" value="${this.light_requirement}">
+      <input type="text" name="light_req" value="${this.light_req}">
       <br/>
       <label>Water Every "X" Days:</label>
-      <input type="text" name="water_frequency" value="${this.water_frequency}">
+      <input type="text" name="water_freq" value="${this.water_freq}">
       <br/>
       <label>Last Watered:</label>
-      <input type="date" name="last_watering" value="${this.last_watering}">
+      <input type="date" name="last_water" value="${this.last_water}">
       <br/>
       <label>Last Fertilized:</label>
-      <input type="date" name="last_fertilization" value="${this.last_fertilization}">
+      <input type="date" name="last_fert" value="${this.last_fert}">
       <br/>
       <label>Comments:</label>
       <textarea name="comments">${this.comments ? this.comments : ''}</textarea>
