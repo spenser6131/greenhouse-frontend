@@ -5,8 +5,8 @@ class SpaceAdapter{
     return fetch(SpaceAdapter.baseURL)
       .then(obj => obj.json())
       .then(function(spacesArray){
-        return spacesArray.forEach(function(space){
-          return new Space(space)
+        return spacesArray.data.forEach(function(space){
+          return new Space(space.attributes)
         })
       })
   }
